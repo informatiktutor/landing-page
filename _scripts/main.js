@@ -21,6 +21,21 @@ const messageSuggestions = [
   continuation.style.height = continuation.clientHeight + 'px';
 })();
 
+const trigger_event = function (name) {
+  console.error('event', name);
+  sa_event(name);
+};
+
+const trigger_event_once = (function () {
+  const state = {};
+  return function (name) {
+    if (state.hasOwnProperty(name)) {
+      return;
+    }
+    state[name] = true;
+    trigger_event(name);
+  }
+})();
 
 (function () {
   const messageInput = document.querySelector('#message');
@@ -42,9 +57,12 @@ const messageSuggestions = [
     sendLink.href = prefix + queryString(newParams);
   }
 
+  register_event_once(messageInput, 'focus', 'email_input_focused');
+
   messageInput.addEventListener('input', e => {
     let message = messageInput.value;
     if (message.length === 0) {
+      trigger_event_once('email_input_cleared');
       message = defaultMessage;
     }
     if (!message.endsWith('...')) {
@@ -59,6 +77,7 @@ const messageSuggestions = [
   const noMailto = document.querySelector('#no-mailto');
 
   sendLink.addEventListener('click', e => {
+    trigger_event('email_continue_clicked');
     sendLink.classList.add('is-loading');
     mailNotice.classList.remove('is-hidden');
     noMailto.classList.add('is-hidden');
@@ -72,6 +91,7 @@ const messageSuggestions = [
 
   window.addEventListener('blur', e => {
     if (timeout !== null) {
+      trigger_event('email_program_likely_opened');
       mailNotice.classList.remove('is-hidden');
       noMailto.classList.add('is-hidden');
     }
@@ -80,6 +100,32 @@ const messageSuggestions = [
     sendLink.classList.remove('is-loading');
   });
 })();
+
+(function () {
+  const whatsappLink = document.querySelector('a.button.is-whatsapp');
+  const whatsappQrLabel = document.querySelector('label[for=radio-whatsapp]');
+  const signalLink = document.querySelector('a.button.is-signal');
+  const signalQrLabel = document.querySelector('label[for=radio-signal]');
+
+  register_event_once(whatsappLink, 'click', 'social_whatsapp_clicked');
+  register_event_once(whatsappQrLabel, 'click', 'social_whatsapp_qr_opened');
+  register_event_once(signalLink, 'click', 'social_signal_clicked');
+  register_event_once(signalQrLabel, 'click', 'social_signal_qr_opened');
+})();
+
+function register_event(element, event, name, once) {
+  element.addEventListener(event, e => {
+    if (once) {
+      trigger_event_once(name);
+    } else {
+      trigger_event(name);
+    }
+  });
+}
+
+function register_event_once(element, event, name) {
+  register_event(element, event, name, true);
+}
 
 function queryParams(string) {
   const result = {};

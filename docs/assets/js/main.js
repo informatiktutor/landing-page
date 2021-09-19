@@ -32,6 +32,23 @@ var messageSuggestions = ["Ich habe Schwierigkeiten bei ...", "Ich verstehe ... 
   continuation.style.height = continuation.clientHeight + 'px';
 })();
 
+var trigger_event = function trigger_event(name) {
+  console.error('event', name);
+  sa_event(name);
+};
+
+var trigger_event_once = function () {
+  var state = {};
+  return function (name) {
+    if (state.hasOwnProperty(name)) {
+      return;
+    }
+
+    state[name] = true;
+    trigger_event(name);
+  };
+}();
+
 (function () {
   var messageInput = document.querySelector('#message');
   var sendLink = document.querySelector('#send-message'); // Enable the input field if JavaScript is enabled.
@@ -54,10 +71,12 @@ var messageSuggestions = ["Ich habe Schwierigkeiten bei ...", "Ich verstehe ... 
     sendLink.href = prefix + queryString(newParams);
   }
 
+  register_event_once(messageInput, 'focus', 'email_input_focused');
   messageInput.addEventListener('input', function (e) {
     var message = messageInput.value;
 
     if (message.length === 0) {
+      trigger_event_once('email_input_cleared');
       message = defaultMessage;
     }
 
@@ -71,6 +90,7 @@ var messageSuggestions = ["Ich habe Schwierigkeiten bei ...", "Ich verstehe ... 
   var mailNotice = document.querySelector('#mail-notice');
   var noMailto = document.querySelector('#no-mailto');
   sendLink.addEventListener('click', function (e) {
+    trigger_event('email_continue_clicked');
     sendLink.classList.add('is-loading');
     mailNotice.classList.remove('is-hidden');
     noMailto.classList.add('is-hidden');
@@ -83,6 +103,7 @@ var messageSuggestions = ["Ich habe Schwierigkeiten bei ...", "Ich verstehe ... 
   });
   window.addEventListener('blur', function (e) {
     if (timeout !== null) {
+      trigger_event('email_program_likely_opened');
       mailNotice.classList.remove('is-hidden');
       noMailto.classList.add('is-hidden');
     }
@@ -92,6 +113,31 @@ var messageSuggestions = ["Ich habe Schwierigkeiten bei ...", "Ich verstehe ... 
     sendLink.classList.remove('is-loading');
   });
 })();
+
+(function () {
+  var whatsappLink = document.querySelector('a.button.is-whatsapp');
+  var whatsappQrLabel = document.querySelector('label[for=radio-whatsapp]');
+  var signalLink = document.querySelector('a.button.is-signal');
+  var signalQrLabel = document.querySelector('label[for=radio-signal]');
+  register_event_once(whatsappLink, 'click', 'social_whatsapp_clicked');
+  register_event_once(whatsappQrLabel, 'click', 'social_whatsapp_qr_opened');
+  register_event_once(signalLink, 'click', 'social_signal_clicked');
+  register_event_once(signalQrLabel, 'click', 'social_signal_qr_opened');
+})();
+
+function register_event(element, event, name, once) {
+  element.addEventListener(event, function (e) {
+    if (once) {
+      trigger_event_once(name);
+    } else {
+      trigger_event(name);
+    }
+  });
+}
+
+function register_event_once(element, event, name) {
+  register_event(element, event, name, true);
+}
 
 function queryParams(string) {
   var result = {};
@@ -150,4 +196,43 @@ function trimEnd(string, char) {
   }
 
   return string;
+}
+
+(function () {
+  var qrLabels = {
+    whatsapp: document.querySelector('label[for=radio-whatsapp]'),
+    signal: document.querySelector('label[for=radio-signal]')
+  };
+
+  var _loop = function _loop(platform) {
+    qrLabels[platform].addEventListener('click', function (e) {
+      setTimeout(function () {
+        var element = document.querySelector('.qrcode.is-' + platform);
+        var offset = (window.innerHeight - element.clientHeight) / 2;
+        var position = elementPosition(element) - offset;
+        window.scroll({
+          top: position,
+          behavior: 'smooth'
+        });
+      }, 0);
+    });
+  };
+
+  for (var platform in qrLabels) {
+    _loop(platform);
+  }
+})();
+
+function elementPosition(element) {
+  if (!element.offsetParent) {
+    return;
+  }
+
+  var top = 0;
+
+  do {
+    top += element.offsetTop;
+  } while (element = element.offsetParent);
+
+  return top;
 }
