@@ -12,7 +12,7 @@
     "icons": "copyfiles -u 1 icons/{css,font}/* docs/assets/icons",
     "qrcodes": "copyfiles -u 2 contact/social/qrcode-*.svg docs/assets/svg",
     "css:scss": "node-sass --output-style compressed -o docs/assets/css _styles",
-    "css:postcss": "postcss -u autoprefixer -r docs/assets/css",
+    "css:postcss": "postcss -u autoprefixer --no-map -r docs/assets/css",
     "build:css": "npm run css:scss && npm run css:postcss",
     "watch:css": "npm run css:scss -- --watch",
     "html:ejs": "ejs -o docs/index.html _views/index.ejs",
