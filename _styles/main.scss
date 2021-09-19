@@ -45,11 +45,12 @@ $signal-blue: #3a76f0;
 #title {
     border-bottom: 6px solid rgba(255, 255, 255, .5);
     display: inline-block;
+    cursor: default;
 }
 
 #title:hover,
 #title:active {
-    border-bottom-color: rgba(255, 255, 255, .9);
+    border-bottom-color: rgba(255, 255, 255, .8);
 }
 
 #contact-container {
