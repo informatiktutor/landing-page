@@ -62,6 +62,11 @@
         </div>
       </div>
     </div>
+    <% if (is_development) { %>
+      <script>
+        window.is_development = true;
+      </script>
+    <% } %>
     <!-- Simple Analytics START -->
     <% ignore_dnt = true %>
     <% analytics_custom_domain = 'sa.' + domain %>

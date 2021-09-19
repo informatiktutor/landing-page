@@ -33,7 +33,10 @@ var messageSuggestions = ["Ich habe Schwierigkeiten bei ...", "Ich verstehe ... 
 })();
 
 var trigger_event = function trigger_event(name) {
-  console.error('event', name);
+  if (is_development) {
+    console.debug('event', name);
+  }
+
   sa_event(name);
 };
 
