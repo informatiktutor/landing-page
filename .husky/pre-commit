@@ -1,0 +1,7 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+git stash --keep-index --include-untracked
+npm run deploy
+git add docs
+git stash pop
