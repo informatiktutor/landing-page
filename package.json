@@ -20,12 +20,14 @@
     "watch:html": "onchange '_views/**/*.ejs' -- npm run build:html",
     "build:js": "babel _scripts -d docs/assets/js",
     "watch:js": "onchange '_scripts/**/*.js' -- npm run build:js",
+    "minify:html": "html-minifier --input-dir docs --output-dir docs --file-ext html --remove-comments --collapse-whitespace --minify-js true --minify-css true",
+    "minify:js": "uglifyjs docs/assets/js/main.js -c -m --mangle-props --ie -o docs/assets/js/main.js",
     "serve": "browser-sync start --no-notify --no-open --server docs --files docs",
     "_watch": "run-p serve watch:css watch:html watch:js",
     "watch": "ENV=development run-s _build _watch",
     "_build": "run-p icons qrcodes build:css build:html build:js",
     "build:development": "ENV=development npm run _build",
-    "build:production": "ENV=production npm run _build",
+    "build:production": "ENV=production run-s _build minify:html minify:js",
     "deploy": "npm run build:production",
     "prepare": "husky install"
   },
@@ -42,12 +44,14 @@
     "copyfiles": "^2.4.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "html-minifier": "^4.0.0",
     "husky": "^7.0.2",
     "node-sass": "^6.0.1",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
     "postcss": "^8.3.6",
     "postcss-cli": "^8.3.1",
-    "qrcode-svg": "^1.1.0"
+    "qrcode-svg": "^1.1.0",
+    "uglifyjs": "^2.4.11"
   }
 }
