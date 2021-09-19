@@ -14,4 +14,4 @@ git stash pop
 
 # remove old assets and restore new ones.
 npm run clean
-git restore docs/assets
+git restore docs
