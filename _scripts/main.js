@@ -1,4 +1,5 @@
 const MAILTO_TIMEOUT = 2000;
+const QR_SCROLL_DELAY = 150;
 
 const messageSuggestions = [
   "Ich habe Schwierigkeiten bei ...",
@@ -181,7 +182,7 @@ function trimEnd(string, char) {
           top: position,
           behavior: 'smooth'
         });
-      }, 0);
+      }, QR_SCROLL_DELAY);
     });
   }
 })();
