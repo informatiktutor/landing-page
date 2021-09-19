@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="de">
+  <% ENV = process.env.ENV %>
+  <% is_production = ENV === 'production' %>
+  <% is_development = ENV === 'development' || ENV === undefined %>
+  <% domain = 'informatiktutor.de' %>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>informatiktutor.de</title>
+    <title><%= domain %></title>
     <link rel="icon" type="image/svg+xml" href="static/icon/favicon.svg">
     <link rel="icon" type="image/png" href="static/icon/favicon.png">
     <link rel="stylesheet" href="assets/css/main.css">
@@ -34,7 +38,7 @@
           <div class="columns is-mobile is-centered">
             <div class="column is-7-tablet is-6-desktop">
               <h1 class="title is-2 is-size-3-mobile is-spaced">
-                <div id="title">informatiktutor.de</div>
+                <div id="title"><%= domain %></div>
               </h1>
               <p class="subtitle is-4">
                 Individuelle Nachhilfe für Informatik-Studenten.
@@ -66,14 +70,16 @@
       </div>
     </div>
     <!-- Simple Analytics START -->
-    <!-- TODO determine hostname based on dev/dist environment -->
     <% ignore_dnt = true %>
-    <% analytics_custom_domain = 'sa.informatiktutor.de' %>
+    <% analytics_custom_domain = 'sa.' + domain %>
     <% analytics_scripts_domain = 'scripts.simpleanalyticscdn.com' %>
     <% analytics_queue_domain = 'queue.simpleanalyticscdn.com' %>
-    <% hostname = 'dev.informatiktutor.de' %>
+    <!-- TODO remove "prod." subdomain once this website is done -->
+    <% hostname = is_production ? 'prod.' + domain : 'dev.' + domain %>
+    <!-- TODO remove ".dev" suffix once this website is reachable via our domain -->
+    <% analytics_suffix = is_development ? '.dev' : '.dev' %>
     <script async defer data-hostname="<%= hostname %>" data-collect-dnt="<%= ignore_dnt %>"
-      src="https://<%= analytics_scripts_domain %>/latest.dev.js"></script>
+      src="https://<%= analytics_scripts_domain %>/latest<%= analytics_suffix %>.js"></script>
     <noscript>
       <img src="https://<%= analytics_queue_domain %>/noscript.gif?hostname=<%= hostname %>&ignore-dnt=<%= ignore_dnt %>"
       alt="" referrerpolicy="no-referrer-when-downgrade" />
