@@ -15,6 +15,7 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var MAILTO_TIMEOUT = 2000;
+var QR_SCROLL_DELAY = 150;
 var messageSuggestions = ["Ich habe Schwierigkeiten bei ...", "Ich verstehe ... nicht", "Das Thema ... liegt mir nicht"];
 
 (function () {
@@ -218,7 +219,7 @@ function trimEnd(string, char) {
           top: position,
           behavior: 'smooth'
         });
-      }, 0);
+      }, QR_SCROLL_DELAY);
     });
   };
 
