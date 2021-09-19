@@ -22,7 +22,9 @@ const messageSuggestions = [
 })();
 
 const trigger_event = function (name) {
-  console.error('event', name);
+  if (is_development) {
+    console.debug('event', name);
+  }
   sa_event(name);
 };
 
