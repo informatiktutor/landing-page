@@ -1,0 +1,47 @@
+{
+  "name": "informatiktutor",
+  "version": "0.0.1",
+  "author": "Jonas van den Berg",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vonas/informatiktutor.de"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "icons": "copyfiles -u 3 node_modules/@fortawesome/fontawesome-free/{js,css,webfonts}/* docs/assets/icons",
+    "qrcodes": "copyfiles -u 2 contact/social/qrcode-*.svg docs/assets/svg",
+    "css:scss": "node-sass --output-style compressed -o docs/assets/css _styles",
+    "css:postcss": "postcss -u autoprefixer -r docs/assets/css",
+    "build:css": "npm run css:scss && npm run css:postcss",
+    "watch:css": "npm run css:scss -- --watch",
+    "html:ejs": "ejs -o docs/index.html _views/index.ejs",
+    "build:html": "npm run html:ejs",
+    "watch:html": "onchange '_views/**/*.ejs' -- npm run build:html",
+    "build:js": "babel _scripts -d docs/assets/js",
+    "watch:js": "onchange '_scripts/**/*.js' -- npm run build:js",
+    "serve": "browser-sync start --no-notify --no-open --server docs --files docs",
+    "watch": "run-p icons qrcodes serve watch:css watch:html watch:js",
+    "deploy": "run-p icons qrcodes build:css build:html build:js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "@creativebulma/bulma-divider": "^1.1.0",
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "autoprefixer": "^10.3.4",
+    "browser-sync": "^2.27.5",
+    "bulma": "^0.9.3",
+    "compression": "^1.7.4",
+    "copyfiles": "^2.4.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "node-sass": "^6.0.1",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "qrcode-svg": "^1.1.0"
+  }
+}
