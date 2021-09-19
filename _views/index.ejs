@@ -16,6 +16,16 @@
       <link rel="stylesheet" href="assets/icons/css/brands.min.css">
       <link rel="stylesheet" href="assets/icons/css/solid.min.css">
     </noscript>
+    <script>
+      window.sa_event =
+        window.sa_event ||
+        function () {
+          var a = [].slice.call(arguments);
+          window.sa_event.q
+            ? window.sa_event.q.push(a)
+            : (window.sa_event.q = [a]);
+        };
+    </script>
   </head>
   <body>
     <section class="hero is-primary">
@@ -55,6 +65,20 @@
         </div>
       </div>
     </div>
+    <!-- Simple Analytics START -->
+    <!-- TODO determine hostname based on dev/dist environment -->
+    <% ignore_dnt = true %>
+    <% analytics_custom_domain = 'sa.informatiktutor.de' %>
+    <% analytics_scripts_domain = 'scripts.simpleanalyticscdn.com' %>
+    <% analytics_queue_domain = 'queue.simpleanalyticscdn.com' %>
+    <% hostname = 'dev.informatiktutor.de' %>
+    <script async defer data-hostname="<%= hostname %>" data-collect-dnt="<%= ignore_dnt %>"
+      src="https://<%= analytics_scripts_domain %>/latest.dev.js"></script>
+    <noscript>
+      <img src="https://<%= analytics_queue_domain %>/noscript.gif?hostname=<%= hostname %>&ignore-dnt=<%= ignore_dnt %>"
+      alt="" referrerpolicy="no-referrer-when-downgrade" />
+    </noscript>
+    <!-- Simple Analytics END -->
     <script src="assets/js/main.js"></script>
   </body>
 </html>
