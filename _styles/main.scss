@@ -108,7 +108,7 @@ input[type=radio][name=qrcode] {
 
 div.column.qrcode-container {
     width: 100%;
-    max-width: 20rem;
+    max-width: 22rem;
 }
 
 .qrcode-container {
@@ -116,21 +116,27 @@ div.column.qrcode-container {
 }
 
 .qrcode {
-    padding: 1.5em;
+    $qrpad: 2em;
+    padding: $qrpad;
+    padding-bottom: $qrpad - .3em;
+    margin-bottom: 1em;
+    border-radius: 1em;
 
     &.is-whatsapp {
-        border-top: 2.5px solid adjust-color($whatsapp-green, $alpha: -.25) !important;
+        border: 2pt solid adjust-color($whatsapp-green, $alpha: -.5) !important;
+        // background: adjust-color($whatsapp-green, $alpha: -.8);
     }
 
     &.is-signal {
-        border-top: 2.5px solid adjust-color($signal-blue, $alpha: -.25) !important;
+        border: 2pt solid adjust-color($signal-blue, $alpha: -.5) !important;
+        // background: adjust-color($signal-blue, $alpha: -.8);
     }
 }
 
 .qrcode > img {
     width: 100%;
     height: auto;
-    border-radius: .5em;
+    border-radius: .25em;
 }
 
 :not(input[type=radio][name=qrcode]:checked) + .qrcode {
