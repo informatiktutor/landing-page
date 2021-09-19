@@ -29,7 +29,8 @@
     "build:development": "ENV=development npm run _build",
     "build:production": "ENV=production run-s _build minify:html minify:js",
     "deploy": "npm run build:production",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "clean": "rm -rf docs/assets"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",

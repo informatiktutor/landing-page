@@ -1,11 +1,17 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# clean old build files so that they are not stashed.
-# popping the stash could otherwise lead ot a conflict.
-npm run clean
-
 git stash --keep-index --include-untracked
+
+# clean assets to make sure nothing old is staged.
+rm -rf docs/assets
 npm run build:development # deploy # TODO deploy production version
 git add docs
+
+# clean assets to prevent a conflict when popping the stash.
+rm -rf docs/assets
 git stash pop
+
+# remove old assets and restore new ones.
+rm -rf docs/assets
+git restore docs/assets
