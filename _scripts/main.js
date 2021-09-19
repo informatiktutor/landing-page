@@ -165,12 +165,12 @@ function trimEnd(string, char) {
 }
 
 (function () {
-  const qrLabels = {
-    whatsapp: document.querySelector('label[for=radio-whatsapp]'),
-    signal: document.querySelector('label[for=radio-signal]')
-  };
-  for (const platform in qrLabels) {
-    qrLabels[platform].addEventListener('click', e => {
+  const qrLabels = [
+    ['whatsapp', document.querySelector('label[for=radio-whatsapp]')],
+    ['signal', document.querySelector('label[for=radio-signal]')]
+  ];
+  for (const [platform, element] of qrLabels) {
+    element.addEventListener('click', e => {
       setTimeout(function () {
         const element = document.querySelector('.qrcode.is-' + platform);
         const offset = (window.innerHeight - element.clientHeight) / 2;

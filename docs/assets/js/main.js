@@ -199,13 +199,14 @@ function trimEnd(string, char) {
 }
 
 (function () {
-  var qrLabels = {
-    whatsapp: document.querySelector('label[for=radio-whatsapp]'),
-    signal: document.querySelector('label[for=radio-signal]')
-  };
+  var qrLabels = [['whatsapp', document.querySelector('label[for=radio-whatsapp]')], ['signal', document.querySelector('label[for=radio-signal]')]];
 
-  var _loop = function _loop(platform) {
-    qrLabels[platform].addEventListener('click', function (e) {
+  var _loop = function _loop() {
+    var _qrLabels$_i = _slicedToArray(_qrLabels[_i2], 2),
+        platform = _qrLabels$_i[0],
+        element = _qrLabels$_i[1];
+
+    element.addEventListener('click', function (e) {
       setTimeout(function () {
         var element = document.querySelector('.qrcode.is-' + platform);
         var offset = (window.innerHeight - element.clientHeight) / 2;
@@ -218,8 +219,8 @@ function trimEnd(string, char) {
     });
   };
 
-  for (var platform in qrLabels) {
-    _loop(platform);
+  for (var _i2 = 0, _qrLabels = qrLabels; _i2 < _qrLabels.length; _i2++) {
+    _loop();
   }
 })();
 
