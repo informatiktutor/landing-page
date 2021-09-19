@@ -1,6 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# clean old build files so that they are not stashed.
+# popping the stash could otherwise lead ot a conflict.
+npm run clean
+
 git stash --keep-index --include-untracked
 npm run build:development # deploy # TODO deploy production version
 git add docs
