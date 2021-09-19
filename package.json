@@ -21,8 +21,11 @@
     "build:js": "babel _scripts -d docs/assets/js",
     "watch:js": "onchange '_scripts/**/*.js' -- npm run build:js",
     "serve": "browser-sync start --no-notify --no-open --server docs --files docs",
-    "watch": "run-p icons qrcodes serve watch:css watch:html watch:js",
-    "deploy": "run-p icons qrcodes build:css build:html build:js"
+    "watch": "ENV=development run-p icons qrcodes serve watch:css watch:html watch:js",
+    "_build": "run-p icons qrcodes build:css build:html build:js",
+    "build:development": "ENV=development npm run _build",
+    "build:production": "ENV=production npm run _build",
+    "deploy": "npm run build:production"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
