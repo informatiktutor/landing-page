@@ -4,14 +4,14 @@
 git stash --keep-index --include-untracked
 
 # clean assets to make sure nothing old is staged.
-rm -rf docs/assets
+npm run clean
 npm run build:development # deploy # TODO deploy production version
 git add docs
 
 # clean assets to prevent a conflict when popping the stash.
-rm -rf docs/assets
+npm run clean
 git stash pop
 
 # remove old assets and restore new ones.
-rm -rf docs/assets
+npm run clean
 git restore docs/assets
