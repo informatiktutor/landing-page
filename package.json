@@ -32,7 +32,7 @@
     "build:production": "ENV=production run-s _build _minify",
     "deploy": "npm run build:production",
     "prepare": "husky install",
-    "clean": "rm -rf docs/assets"
+    "clean": "rm -rf docs/assets docs/**/*.html"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
