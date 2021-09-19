@@ -117,3 +117,35 @@ function trimEnd(string, char) {
   }
   return string;
 }
+
+(function () {
+  const qrLabels = {
+    whatsapp: document.querySelector('label[for=radio-whatsapp]'),
+    signal: document.querySelector('label[for=radio-signal]')
+  };
+  for (const platform in qrLabels) {
+    qrLabels[platform].addEventListener('click', e => {
+      setTimeout(function () {
+        const element = document.querySelector('.qrcode.is-' + platform);
+        const offset = (window.innerHeight - element.clientHeight) / 2;
+        const position = elementPosition(element) - offset;
+        window.scroll({
+          top: position,
+          behavior: 'smooth'
+        });
+      }, 0);
+    });
+  }
+})();
+
+function elementPosition(element) {
+  if (!element.offsetParent) {
+    return;
+  }
+  let top = 0;
+  do {
+      top += element.offsetTop;
+  }
+  while (element = element.offsetParent);
+  return top;
+}
