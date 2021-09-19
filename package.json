@@ -9,7 +9,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "icons": "copyfiles -u 3 node_modules/@fortawesome/fontawesome-free/{js,css,webfonts}/* docs/assets/icons",
+    "icons": "copyfiles -u 1 icons/{css,font}/* docs/assets/icons",
     "qrcodes": "copyfiles -u 2 contact/social/qrcode-*.svg docs/assets/svg",
     "css:scss": "node-sass --output-style compressed -o docs/assets/css _styles",
     "css:postcss": "postcss -u autoprefixer -r docs/assets/css",
@@ -44,6 +44,7 @@
     "copyfiles": "^2.4.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "fontello-cli": "^0.6.2",
     "html-minifier": "^4.0.0",
     "husky": "^7.0.2",
     "node-sass": "^6.0.1",
