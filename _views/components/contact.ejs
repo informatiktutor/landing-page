@@ -1,0 +1,110 @@
+<% mail_link_text = 'Weiter' %>
+<div class="field">
+  <label class="label" for="message">
+    Sende mir eine Mail
+  </label>
+  <div class="field">
+    <div class="columns is-mobile is-multiline">
+      <div class="column is-full-mobile">
+        <div class="control has-icons-left">
+          <input id="message" class="input" type="text" disabled="true"
+            placeholder="Ich habe Interesse!" value="Ich habe Interesse!">
+          <span class="icon is-small is-left">
+            <i class="fa fa-paper-plane"></i>
+          </span>
+        </div>
+      </div>
+      <div class="column is-narrow-tablet is-vertical is-mobile-stacked">
+        <div class="control">
+          <a id="send-message" class="button is-info is-fullwidth"
+            href="<%= include('contact/email/url') -%>">
+            <b><%= mail_link_text %></b>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p id="edit-notice" class="help is-danger">
+    Um die Nachricht zu bearbeiten muss JavaScript aktiviert sein.
+  </p>
+  <script>
+    document.querySelector('#edit-notice').classList.add('is-hidden');
+  </script>
+  <p id="mail-notice" class="help has-text-grey">
+    <span>
+      Mit Klick auf
+      <span class="help-emphasize">
+        <%= mail_link_text %>
+      </span>
+      wird Dein Mail-Programm geöffnet.
+      Nehme vor dem Absenden der Mail bitte den dort angezeigten
+      <span class="help-emphasize">
+        rechtlichen Hinweis
+      </span>
+      zur Kenntnis
+      (gemäß UWG, §7 Absatz 3).
+    </span>
+  </p>
+  <p id="no-mailto" class="help is-hidden">
+    <span class="has-text-danger">
+      <b>Ups! Dein Browser scheint kein Mail-Programm zu öffnen.</b>
+    </span>
+    <br>
+    Hier findest du vielleicht eine Lösung:
+    <a target="_blank" href="https://support.mozilla.org/en-US/questions/883447">
+      <code class="has-text-link">Firefox</code>
+    </a>
+    <a target="_blank" href="https://stackoverflow.com/a/17635636">
+      <code class="has-text-link">Chrome</code>
+    </a>
+  </p>
+</div>
+<div class="divider">oder</div>
+<div class="field">
+  Schreibe mir direkt über einen der folgenden Dienste
+</div>
+<!-- TODO include button twice -->
+<div class="field">
+  <div class="columns is-mobile is-multiline">
+    <div class="column is-full-mobile">
+      <a class="button is-fullwidth is-outlined is-whatsapp" target="_blank"
+      href="<%= include('contact/social/whatsapp-url.txt') %>">
+        <span class="icon">
+          <i class="fab fa-whatsapp"></i>
+        </span>
+        <b>WhatsApp</b>
+      </a>
+      <div class="has-text-centered has-text-grey-dark my-2 is-hidden-mobile">
+        <label class="radio-label" for="radio-whatsapp">
+          <b>QR-Code anzeigen</b>
+        </label>
+      </div>
+    </div>
+    <div class="column is-vertical is-mobile-stacked">
+      <a class="button is-fullwidth is-outlined is-signal" target="_blank"
+      href="<%= include('contact/social/signal-url.txt') %>">
+        <span class="icon-signal"></span>
+        <b>Signal</b>
+      </a>
+      <div class="has-text-centered has-text-grey-dark my-2 is-hidden-mobile">
+        <label class="radio-label" for="radio-signal">
+          <b>QR-Code anzeigen</b>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<form class="field is-hidden-mobile" action="javascript:void(0);">
+  <div class="columns is-centered">
+    <div class="qrcode-container column is-narrow">
+      <input name="qrcode" id="radio-whatsapp" type="radio">
+      <div class="qrcode is-whatsapp">
+        <img src="assets/svg/qrcode-whatsapp.svg">
+      </div>
+      <input name="qrcode" id="radio-signal" type="radio">
+      <div class="qrcode is-signal">
+        <img src="assets/svg/qrcode-signal.svg">
+      </div>
+    </div>
+  </div>
+</form>

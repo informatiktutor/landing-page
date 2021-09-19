@@ -1,0 +1,5 @@
+<% recipient = 'jonas@informatiktutor.de' -%>
+<% subject = 'Bitte informiere mich, sobald Du Nachhilfe anbietest' -%>
+<% subject = encodeURIComponent(subject); -%>
+<% body = encodeURIComponent(include('contact/email/body.txt')); -%>
+mailto:<%= recipient %>?subject=<%= subject %>&body=<%= body -%>
