@@ -190,3 +190,9 @@ footer.footer {
         }
     }
 }
+
+.hero-body {
+    @include tablet-only {
+        padding: 3rem 1.5rem;
+    }
+}
