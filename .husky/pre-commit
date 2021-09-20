@@ -7,7 +7,7 @@ git checkout docs # make sure the old stuff is stashed to prevent conflicts
 git stash --keep-index --include-untracked
 
 npm run clean # clean committed build files before build
-npm run build:development # deploy # TODO deploy production version
+npm run deploy
 git add docs
 
 npm run clean # prevent a conflict when popping the stash
