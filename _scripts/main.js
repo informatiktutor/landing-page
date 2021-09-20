@@ -68,8 +68,13 @@ const trigger_event_once = (function () {
       trigger_event_once('email_input_cleared');
       message = defaultMessage;
     }
+    message = message.trim();
+    message = message.charAt(0).toUpperCase() + message.slice(1);
     if (!message.endsWith('...')) {
-      message = trimEnd(message, '.') + '.';
+      message = trimEnd(message, '.');
+      if (message.charAt(message.length - 1).match(/[A-Za-z]/)) {
+        message += '.';
+      }
     }
     setMessage(message);
   });
