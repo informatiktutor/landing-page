@@ -69,12 +69,12 @@
     <% analytics_queue_domain = 'queue.simpleanalyticscdn.com' %>
     <% hostname = is_production ? domain : 'dev.' + domain %>
     <% analytics_suffix = is_development ? '.dev' : '' %>
-    <!-- <script async defer data-hostname="<%= hostname %>" data-collect-dnt="<%= ignore_dnt %>"
+    <script async defer data-hostname="<%= hostname %>" data-collect-dnt="<%= ignore_dnt %>"
       src="https://<%= analytics_scripts_domain %>/latest<%= analytics_suffix %>.js"></script>
     <noscript>
       <img src="https://<%= analytics_queue_domain %>/noscript.gif?hostname=<%= hostname %>&ignore-dnt=<%= ignore_dnt %>"
       alt="" referrerpolicy="no-referrer-when-downgrade" />
-    </noscript> -->
+    </noscript>
     <!-- Simple Analytics END -->
     <script src="assets/js/main.js"></script>
   </body>

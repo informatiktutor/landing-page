@@ -198,3 +198,11 @@ function elementPosition(element) {
   while (element = element.offsetParent);
   return top;
 }
+
+(function () {
+  const links = ['github', 'source', 'imprint', 'privacy'];
+  for (const name of links) {
+    const element = document.querySelector('#link-' + name);
+    register_event_once(element, 'click', 'footer_' + name + '_clicked');
+  }
+})();
