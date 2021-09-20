@@ -140,8 +140,12 @@ div.column.qrcode-container {
     border-radius: .25em;
 }
 
-:not(input[type=radio][name=qrcode]:checked) + .qrcode {
-    display: none;
+input[type=radio][name=qrcode] + .qrcode {
+    display:none;
+}
+
+input[type=radio][name=qrcode]:checked + .qrcode {
+    display:inherit;
 }
 
 .is-outlined.is-whatsapp:hover,
