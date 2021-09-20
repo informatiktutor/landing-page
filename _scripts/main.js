@@ -205,7 +205,7 @@ function elementPosition(element) {
 }
 
 (function () {
-  const links = ['github', 'source', 'imprint', 'privacy'];
+  const links = ['github', 'source'];
   for (const name of links) {
     const element = document.querySelector('#link-' + name);
     register_event_once(element, 'click', 'footer_' + name + '_clicked');
