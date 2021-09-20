@@ -23,7 +23,7 @@ const messageSuggestions = [
 })();
 
 const trigger_event = function (name) {
-  if (is_development) {
+  if (window.hasOwnProperty('is_development')) {
     console.debug('event', name);
   }
   sa_event(name);
