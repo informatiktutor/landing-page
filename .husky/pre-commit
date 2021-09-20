@@ -1,12 +1,14 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# TODO what happens if the watch command is run during a commit? explosion?
+
 git checkout docs # make sure the old stuff is stashed to prevent conflicts
 git stash --keep-index --include-untracked
 
 npm run clean # clean committed build files before build
 npm run build:development # deploy # TODO deploy production version
-git add docs # what if i change non-build files that I staged?
+git add docs
 
 npm run clean # prevent a conflict when popping the stash
 git stash pop
