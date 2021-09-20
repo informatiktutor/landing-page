@@ -6,12 +6,13 @@
   
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>informatiktutor.de</title>
-    <link rel="icon" type="image/svg+xml" href="static/icon/favicon.svg">
-    <link rel="icon" type="image/png" href="static/icon/favicon.png">
-    <link rel="stylesheet" href="assets/css/main.css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>informatiktutor.de</title>
+<link rel="icon" type="image/svg+xml" href="static/icon/favicon.svg">
+<link rel="icon" type="image/png" href="static/icon/favicon.png">
+<link rel="stylesheet" href="assets/css/main.css">
+ 
     <link rel="stylesheet" href="assets/icons/css/icons.css">
     <script>
       window.sa_event =
@@ -25,36 +26,40 @@
     </script>
   </head>
   <body>
-    <section class="hero is-primary">
-      <div class="hero-body">
-        <div class="container">
-          <div class="columns is-mobile is-centered">
-            <div class="column is-7-tablet is-6-desktop is-11-mobile">
-              <h1 class="title is-2 is-size-3-mobile is-spaced">
-                <div id="title">informatiktutor.de</div>
-              </h1>
-              <p class="subtitle is-4">
-                Individuelle Nachhilfe für Informatik-Studenten.
-              </p>
-              <p class="subtitle is-4">
-                Buchungen sind ab <b>Mitte Oktober</b> möglich.
-                In der Zwischenzeit kannst Du mich gerne kontaktieren,
-                um benachrichtigt zu werden, wenn es soweit ist.
-              </p>
+    <div class="page">
+      <section class="hero is-primary">
+        <div class="hero-body">
+          <div class="container">
+            <div class="columns is-mobile is-centered">
+              <div class="column is-7-tablet is-6-desktop is-11-mobile">
+                <h1 class="title is-2 is-size-3-mobile is-spaced">
+  
+  <span id="title">informatiktutor.de</span>
+  
+</h1>
+
+                <p class="subtitle is-4">
+                  Individuelle Nachhilfe für Informatik-Studenten.
+                </p>
+                <p class="subtitle is-4">
+                  Buchungen sind ab <b>Mitte Oktober</b> möglich.
+                  In der Zwischenzeit kannst Du mich gerne kontaktieren,
+                  um benachrichtigt zu werden, wenn es soweit ist.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <div id="contact-container" class="mb-6">
-      <div class="hero-continuation"></div>
-      <div class="container">
-        <div class="columns is-marginless is-mobile is-centered">
-          <div class="column is-11-mobile is-7-tablet is-7-desktop">
-            <div class="card">
-              <div class="card-content">
-                <div class="content">
-                  
+      </section>
+      <div id="contact-container" class="mb-6">
+        <div class="hero-continuation"></div>
+        <div class="container">
+          <div class="columns is-marginless is-mobile is-centered">
+            <div class="column is-11-mobile is-7-tablet is-7-desktop">
+              <div class="card">
+                <div class="card-content">
+                  <div class="content">
+                    
 <div class="field">
   <label class="label" for="message">
     Sende mir eine Mail
@@ -107,10 +112,10 @@
     </span>
     <br>
     Hier findest du vielleicht eine Lösung:
-    <a target="_blank" href="https://support.mozilla.org/en-US/questions/883447">
+    <a target="_blank" rel="noopener noreferrer" href="https://support.mozilla.org/en-US/questions/883447">
       <code class="has-text-link">Firefox</code>
     </a>
-    <a target="_blank" href="https://stackoverflow.com/a/17635636">
+    <a target="_blank" rel="noopener noreferrer" href="https://stackoverflow.com/a/17635636">
       <code class="has-text-link">Chrome</code>
     </a>
   </p>
@@ -123,7 +128,8 @@
 <div class="field">
   <div class="columns is-mobile is-multiline">
     <div class="column is-full-mobile">
-      <a class="button is-fullwidth is-outlined is-whatsapp" target="_blank"
+      <a class="button is-fullwidth is-outlined is-whatsapp"
+      target="_blank" rel="noopener noreferrer"
       href="https://wa.me/+4915735689487">
         <span class="icon">
           <i class="icon-whatsapp"></i>
@@ -137,7 +143,8 @@
       </div>
     </div>
     <div class="column is-vertical is-mobile-stacked">
-      <a class="button is-fullwidth is-outlined is-signal" target="_blank"
+      <a class="button is-fullwidth is-outlined is-signal"
+      target="_blank" rel="noopener noreferrer"
       href="https://signal.me/#p/+4915735689487">
         <span class="icon-signal"></span>
         <b>Signal</b>
@@ -164,6 +171,7 @@
     </div>
   </div>
 </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -171,6 +179,18 @@
         </div>
       </div>
     </div>
+    <footer class="footer px-6">
+  <div class="content has-text-centered">
+    <span>&copy; Copyright 2021 Jonas van den Berg</span>
+    <span style="white-space: normal; display: inline-block">
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/informatiktutor">GitHub</a>
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/informatiktutor/landing-page">Quellcode</a>
+      <a href="/impressum.html">Impressum</a>
+      <a href="/impressum.html#datenschutz">Datenschutz</a>
+    </span>
+  </div>
+</footer>
+
     
       <script>
         window.is_development = true;
@@ -183,12 +203,12 @@
     
     
     
-    <script async defer data-hostname="dev.informatiktutor.de" data-collect-dnt="true"
+    <!-- <script async defer data-hostname="dev.informatiktutor.de" data-collect-dnt="true"
       src="https://scripts.simpleanalyticscdn.com/latest.dev.js"></script>
     <noscript>
       <img src="https://queue.simpleanalyticscdn.com/noscript.gif?hostname=dev.informatiktutor.de&ignore-dnt=true"
       alt="" referrerpolicy="no-referrer-when-downgrade" />
-    </noscript>
+    </noscript> -->
     <!-- Simple Analytics END -->
     <script src="assets/js/main.js"></script>
   </body>
