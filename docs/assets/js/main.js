@@ -241,3 +241,13 @@ function elementPosition(element) {
 
   return top;
 }
+
+(function () {
+  var links = ['github', 'source', 'imprint', 'privacy'];
+
+  for (var _i3 = 0, _links = links; _i3 < _links.length; _i3++) {
+    var name = _links[_i3];
+    var element = document.querySelector('#link-' + name);
+    register_event_once(element, 'click', 'footer_' + name + '_clicked');
+  }
+})();
