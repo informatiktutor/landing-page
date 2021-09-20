@@ -23,7 +23,7 @@
     "build:static": "cp -r static/* docs",
     "minify:html": "html-minifier --input-dir docs --output-dir docs --file-ext html --remove-comments --collapse-whitespace --minify-js true --minify-css true",
     "minify:js": "uglifyjs docs/assets/js/main.js -c -m --mangle-props --ie -o docs/assets/js/main.js",
-    "minify:css": "purgecss --css docs/assets/css/main.css --content docs/index.html -o docs/assets/css/main.css",
+    "minify:css": "purgecss --css docs/assets/css/main.css --content docs/index.html --content docs/impressum.html -o docs/assets/css/main.css",
     "serve:development": "browser-sync start --no-notify --no-open --server docs --files docs",
     "_watch": "run-p serve:development watch:css watch:html watch:js",
     "watch": "ENV=development run-s _build _watch",
