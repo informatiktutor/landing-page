@@ -1,17 +1,12 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+git checkout docs # make sure the old stuff is stashed to prevent conflicts
 git stash --keep-index --include-untracked
 
-# clean assets to make sure nothing old is staged.
-npm run clean
+npm run clean # clean committed build files before build
 npm run build:development # deploy # TODO deploy production version
-git add docs
+git add docs # what if i change non-build files that I staged?
 
-# clean assets to prevent a conflict when popping the stash.
-npm run clean
+npm run clean # prevent a conflict when popping the stash
 git stash pop
-
-# remove old assets and restore new ones.
-npm run clean
-git restore docs
