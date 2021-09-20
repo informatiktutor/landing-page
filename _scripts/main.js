@@ -205,6 +205,4 @@ function elementPosition(element) {
     const element = document.querySelector('#link-' + name);
     register_event_once(element, 'click', 'footer_' + name + '_clicked');
   }
-  const sourceAbout = document.querySelector('#link-source-about');
-  register_event_once(sourceAbout, 'click', 'about_source_clicked')
 })();
