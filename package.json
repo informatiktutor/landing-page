@@ -15,7 +15,7 @@
     "css:postcss": "postcss -u autoprefixer --no-map -r docs/assets/css",
     "build:css": "npm run css:scss && npm run css:postcss",
     "watch:css": "npm run css:scss -- --watch",
-    "html:ejs": "ejs -o docs/index.html _views/index.ejs && ejs -o docs/impressum.html _views/impressum.ejs",
+    "html:ejs": "ejs -o docs/index.html _views/index.ejs && ejs -o docs/impressum.html _views/impressum.ejs && ejs -o docs/404.html _views/404.ejs",
     "build:html": "npm run html:ejs",
     "watch:html": "onchange '_views/**/*.ejs' -- npm run build:html",
     "build:js": "babel _scripts -d docs/assets/js",
