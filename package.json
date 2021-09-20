@@ -15,7 +15,7 @@
     "css:postcss": "postcss -u autoprefixer --no-map -r docs/assets/css",
     "build:css": "npm run css:scss && npm run css:postcss",
     "watch:css": "npm run css:scss -- --watch",
-    "html:ejs": "ejs -o docs/index.html _views/index.ejs",
+    "html:ejs": "ejs -o docs/index.html _views/index.ejs && ejs -o docs/impressum.html _views/impressum.ejs",
     "build:html": "npm run html:ejs",
     "watch:html": "onchange '_views/**/*.ejs' -- npm run build:html",
     "build:js": "babel _scripts -d docs/assets/js",
@@ -32,7 +32,7 @@
     "build:production": "ENV=production run-s _build _minify",
     "deploy": "npm run build:production",
     "prepare": "husky install",
-    "clean": "rm -rf docs/assets docs/**/*.html"
+    "clean": "rm -rf docs/assets docs/*.html"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",

@@ -38,8 +38,8 @@ $signal-blue: #3a76f0;
     box-shadow: 0 0.15em .65em -0.125em rgba(10,10,10,0.19);
 }
 
-#title > a {
-    color: #fff !important;
+a > #title {
+    cursor: pointer;
 }
 
 #title {
@@ -160,4 +160,33 @@ div.column.qrcode-container {
 .help-emphasize {
     font-weight: bold;
     padding: 0px 1pt;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.page {
+    flex: 1;
+}
+
+footer.footer {
+    background-color: inherit;
+    padding: 1rem;
+    font-size: 9pt;
+    color: #777;
+
+    div.content {
+        * {
+            margin: 2pt;
+        }
+
+        a {
+            color: #777;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 1pt;
+        }
+    }
 }
