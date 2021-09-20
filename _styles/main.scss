@@ -201,3 +201,9 @@ footer.footer {
 .paragraph {
     margin-bottom: 1rem;
 }
+
+.footer-extension {
+    @include mobile {
+        height: 1rem;
+    }
+}
