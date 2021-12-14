@@ -6,9 +6,9 @@
 <% analytics_queue_domain = is_production ? analytics_custom_domain : analytics_queue_domain %>
 <% hostname = is_production ? domain : 'dev.' + domain %>
 <% analytics_suffix = is_development ? '.dev' : '' %>
-<script async defer data-hostname="<%= hostname %>" data-collect-dnt="<%= ignore_dnt %>"
+<!-- <script async defer data-hostname="<%= hostname %>" data-collect-dnt="<%= ignore_dnt %>"
   src="https://<%= analytics_scripts_domain %>/latest<%= analytics_suffix %>.js"></script>
 <noscript>
   <img src="https://<%= analytics_queue_domain %>/noscript.gif?hostname=<%= hostname %>&ignore-dnt=<%= ignore_dnt %>"
   alt="" referrerpolicy="no-referrer-when-downgrade" />
-</noscript>
+</noscript> -->
